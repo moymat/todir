@@ -1,0 +1,28 @@
+.task {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: orange;
+	padding: 0.5rem 0.75rem;
+	box-sizing: border-box;
+	border-radius: 0.8rem;
+}
+
+.task-title {
+	margin: 0;
+	font-size: 0.7rem;
+}
+
+.btns-container {
+	display: flex;
+	align-items: center;
+}
+
+.task-btn {
+	font-size: 1rem;
+}
+
+.task-btn:first-of-type {
+	margin-right: 0.4rem;
+}

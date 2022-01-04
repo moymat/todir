@@ -1,0 +1,43 @@
+.list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: orange;
+	padding: 0.5rem 0.75rem;
+	box-sizing: border-box;
+	border-radius: 0.8rem;
+}
+
+.list:not(:last-child) {
+	margin-bottom: 0.5rem;
+}
+
+.list-title {
+	font-size: 0.7rem;
+}
+
+.list-title {
+	margin: 0;
+}
+
+.btn-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 4rem;
+	background-color: white;
+	border-radius: 1rem;
+	padding: 0 0.25rem;
+}
+
+.btn-container span {
+	align-self: baseline;
+	font-size: 1rem;
+}
+
+.list-amount {
+	font-size: 0.6rem;
+	margin: 0;
+	margin-left: 0.4rem;
+}

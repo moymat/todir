@@ -1,0 +1,73 @@
+.navbar {
+	position: fixed;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	min-height: var(--nav-height);
+	background-color: darkgray;
+}
+
+.logo,
+.icon-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 1rem;
+	width: var(--nav-item-dimension);
+	cursor: pointer;
+}
+
+.logo {
+	background-color: white;
+	width: var(--nav-item-dimension);
+	height: var(--nav-item-dimension);
+	border-radius: 50%;
+}
+
+.menu {
+	position: absolute;
+	top: var(--nav-height);
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: calc(100vh - var(--nav-height));
+	background-color: darkgray;
+	border-top: 0.15rem solid dimgray;
+	list-style: none;
+	z-index: 100;
+}
+
+.menu.hidden {
+	display: none;
+}
+
+.menu-item {
+	margin-top: 2.5rem;
+}
+
+.menu-link {
+	display: inline-block;
+	position: relative;
+	color: white;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.menu-link::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 0;
+	height: 0.1rem;
+	background-color: white;
+	transition: width 0.2s ease;
+}
+
+.menu-item.selected .menu-link::after,
+.menu-item:hover .menu-link::after {
+	width: 100%;
+}

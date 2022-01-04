@@ -1,0 +1,14 @@
+:root {
+	--nav-height: 3rem;
+	--nav-item-dimension: 2rem;
+}
+
+.main-container {
+	margin-top: var(--nav-height);
+	padding: 0 0.5rem;
+}
+
+.section-title {
+	font-size: 1.1rem;
+	text-align: center;
+}
