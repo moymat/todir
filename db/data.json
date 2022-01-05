@@ -14,7 +14,7 @@
       "dueDate": "2022-01-17",
       "description": "Eu nisi laborum qui consequat labore commodo incididunt eiusmod consequat nostrud enim voluptate. Commodo magna aliqua qui pariatur aliqua exercitation incididunt nulla. Magna nisi velit officia exercitation mollit minim enim duis non velit. Voluptate nostrud occaecat irure Lorem ullamco officia. Et velit consectetur amet ex fugiat occaecat adipisicing occaecat ea do consequat est.",
       "list": 1,
-      "completed": true
+      "completed": "2022-01-04"
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "dueDate": "2022-01-29",
       "description": "Anim irure cillum laborum fugiat enim et aliqua esse. Occaecat magna quis exercitation deserunt nisi eu exercitation est qui. Irure consequat mollit quis magna magna nostrud ea tempor. Irure ullamco ipsum enim laborum tempor quis. Excepteur enim ullamco qui consequat pariatur incididunt nostrud et officia sit voluptate enim eu. Ullamco exercitation officia sunt cillum. Ullamco excepteur magna nisi dolor dolore ex esse veniam consequat.",
       "list": 2,
-      "completed": true
+      "completed": "2022-01-04"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "dueDate": "2022-01-13",
       "list": 1,
       "description": "",
-      "completed": true
+      "completed": "2022-01-04"
     },
     {
       "id": 6,
@@ -46,7 +46,7 @@
       "dueDate": "2022-02-04",
       "list": 1,
       "description": "",
-      "completed": true
+      "completed": "2022-01-04"
     },
     {
       "id": 7,
@@ -54,27 +54,32 @@
       "dueDate": "2022-01-22",
       "list": 1,
       "description": "",
-      "completed": true
+      "completed": "2022-01-04"
+    },
+    {
+      "title": "Test 66",
+      "dueDate": "2022-01-14",
+      "list": 2,
+      "description": "",
+      "completed": "2022-01-05",
+      "id": 8
     }
   ],
   "lists": [
     {
       "id": 0,
       "title": "List 1",
-      "color": "#f91a1a",
-      "amount": 1
+      "color": "#f91a1a"
     },
     {
       "id": 1,
       "title": "List 2",
-      "color": "#ca68b8",
-      "amount": 5
+      "color": "#3abff8"
     },
     {
       "id": 2,
       "title": "List 3",
-      "color": "#09aa6c",
-      "amount": 1
+      "color": "#09aa6c"
     },
     {
       "id": 3,
@@ -83,7 +88,6 @@
     },
     {
       "id": 4,
-      "amount": 0,
       "title": "List 5",
       "color": "#2241dd"
     }

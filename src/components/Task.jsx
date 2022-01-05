@@ -6,6 +6,7 @@ import "../styles/task.css";
 
 const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 	const [isExpanded, setIsExpanded] = useState(false);
+	const [relatedList, setRelatedList] = useState(null);
 	const { setTaskCompleted, deleteTask } = useContext(TasksContext);
 	const { lists } = useContext(ListsContext);
 	const navigate = useNavigate();
@@ -28,24 +29,24 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 
 	useEffect(() => {
 		setIsExpanded(taskExpanded === task.id);
-	}, [taskExpanded, task]);
+		setRelatedList(lists.find(list => list.id === task.list));
+	}, [taskExpanded, task, lists]);
 
 	return (
 		<div
 			className={`task ${task.completed ? "completed" : ""}`}
 			style={
-				task.completed
+				relatedList &&
+				(task.completed
 					? {
-							borderColor: lists.find(list => list.id === task.list).color,
+							borderColor: relatedList.color,
 					  }
 					: {
-							backgroundColor: `${
-								lists.find(list => list.id === task.list).color
-							}7F`,
-							borderColor: lists.find(list => list.id === task.list).color,
-					  }
+							backgroundColor: `${relatedList.color}7F`,
+							borderColor: relatedList.color,
+					  })
 			}>
-			<div className="main-bar">
+			<div className={`main-bar ${isExpanded ? "expanded" : ""}`}>
 				<div className={`title-container ${extended ? "extended" : ""}`}>
 					{extended && (
 						<span onClick={toggleExpand} className="expand material-icons">
@@ -56,6 +57,16 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 					{isUrgent(task.dueDate) && extended && (
 						<span className="alert material-icons">warning</span>
 					)}
+					<p className="task-list">
+						Liste : {relatedList ? relatedList.title : "chargement..."}
+					</p>
+					{
+						<p className="task-date">
+							{task.completed
+								? `Complétée le : ${task.completed}`
+								: `Pour le : ${task.dueDate}`}
+						</p>
+					}
 				</div>
 				<div className="btns-container">
 					<span
@@ -73,9 +84,11 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 			{extended && (
 				<div className={`details-bar ${isExpanded ? "" : "hidden"}`}>
 					<p className="description">{task.description || "Pas de détails"}</p>
-					<button className="btn" onClick={handleEditClick}>
-						<span className="icon material-icons">edit</span>Editer
-					</button>
+					{!task.completed && (
+						<button className="btn" onClick={handleEditClick}>
+							<span className="icon material-icons">edit</span>Editer
+						</button>
+					)}
 				</div>
 			)}
 		</div>

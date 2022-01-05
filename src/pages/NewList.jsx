@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ListsContext } from "../App";
 import "../styles/newList.css";
 
@@ -12,14 +12,21 @@ const NewList = () => {
 	});
 	const colorCircle = useRef();
 	const { state } = useLocation();
+	const navigate = useNavigate();
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		list ? addOrUpdateList(inputs, list.id) : addOrUpdateList(inputs);
+		list
+			? addOrUpdateList({ ...inputs, id: list.id })
+			: addOrUpdateList(inputs);
 	};
 
 	const handleChange = e => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
+	};
+
+	const handleCancel = () => {
+		navigate("/lists", { state: list ? { expanded: list.id } : {} });
 	};
 
 	useEffect(() => {
@@ -72,7 +79,9 @@ const NewList = () => {
 					<button className="btn add-btn" type="submit">
 						{list ? "Modifier" : "Ajouter"}
 					</button>
-					<button className="btn cancel-btn">Annuler</button>
+					<button className="btn cancel-btn" onClick={handleCancel}>
+						Annuler
+					</button>
 				</div>
 			</form>
 		</main>

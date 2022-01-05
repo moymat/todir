@@ -9,6 +9,7 @@ import Lists from "./pages/Lists";
 import NewTask from "./pages/NewTask";
 import NewList from "./pages/NewList";
 import "./App.css";
+import { format } from "date-fns";
 
 export const ListsContext = createContext([]);
 export const TasksContext = createContext([]);
@@ -19,12 +20,13 @@ const App = () => {
 	const navigate = useNavigate();
 
 	const setTaskCompleted = async id => {
+		const now = format(Date.now(), "yyyy-MM-dd");
 		await axios.patch(`/tasks/${id}`, {
-			completed: true,
+			completed: now,
 		});
 		setTasks(
 			tasks.map(task =>
-				task.id === id ? { ...task, completed: true } : { ...task }
+				task.id === id ? { ...task, completed: now } : { ...task }
 			)
 		);
 	};
@@ -34,22 +36,19 @@ const App = () => {
 		setTasks(tasks.filter(task => task.id !== id));
 	};
 
-	const addOrUpdateTask = async (inputs, id) => {
+	const addOrUpdateTask = async newTask => {
+		const { dueDate, id } = newTask;
 		if (id !== undefined) {
-			const task = tasks.find(task => task.id === id);
-			const newTask = { ...task, ...inputs };
 			setTasks(
-				tasks.map(task => (task.id === id ? { ...newTask } : { ...task }))
+				tasks.map(task => (task.id === id ? { ...task, ...newTask } : task))
 			);
-			delete newTask.urgent;
 			await axios.patch(`/tasks/${id}`, newTask);
 			navigate("/tasks", { state: { expanded: id } });
 		} else {
-			const nextId = Math.max(...tasks.map(task => task.id)) + 1;
-			const newTask = { id: nextId, ...inputs };
-			setTasks([...tasks, newTask]);
+			newTask.id = Math.max(...tasks.map(task => task.id)) + 1;
+			setTasks([...tasks, { ...newTask, urgent: isUrgent(dueDate) }]);
 			await axios.post(`/tasks`, newTask);
-			navigate("/tasks", { state: { expanded: nextId } });
+			navigate("/tasks", { state: { expanded: newTask.id } });
 		}
 	};
 
@@ -58,22 +57,17 @@ const App = () => {
 		setLists(lists.filter(list => list.id !== id));
 	};
 
-	const addOrUpdateList = async (inputs, id) => {
+	const addOrUpdateList = async newList => {
+		const { id } = newList;
 		if (id !== undefined) {
-			const list = lists.find(list => list.id === id);
-			const newList = { ...list, ...inputs };
-			setLists(
-				lists.map(list => (list.id === id ? { ...newList } : { ...list }))
-			);
-			delete list.amount;
 			await axios.patch(`/lists/${id}`, newList);
+			setLists(lists.map(list => (list.id === id ? newList : list)));
 			navigate("/lists", { state: { expanded: id } });
 		} else {
-			const nextId = Math.max(...lists.map(list => list.id)) + 1;
-			const newList = { id: nextId, amount: 0, ...inputs };
-			setLists([...lists, newList]);
+			newList.id = Math.max(...lists.map(list => list.id)) + 1;
 			await axios.post(`/lists`, newList);
-			navigate("/lists", { state: { expanded: nextId } });
+			setLists([...lists, { ...newList, amount: 0 }]);
+			navigate("/lists", { state: { expanded: newList.id } });
 		}
 	};
 

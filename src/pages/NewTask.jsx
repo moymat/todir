@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { ListsContext, TasksContext } from "../App";
 import "../styles/newTask.css";
@@ -16,6 +16,7 @@ const NewTask = () => {
 	});
 	const dateInput = useRef();
 	const { state } = useLocation();
+	const navigate = useNavigate();
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -26,11 +27,17 @@ const NewTask = () => {
 			description: inputs.desc,
 			completed: false,
 		};
-		task ? addOrUpdateTask(newInputs, task.id) : addOrUpdateTask(newInputs);
+		task
+			? addOrUpdateTask({ ...newInputs, id: task.id })
+			: addOrUpdateTask(newInputs);
 	};
 
 	const handleChange = e => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
+	};
+
+	const handleCancel = () => {
+		navigate("/tasks", { state: task ? { expanded: task.id } : {} });
 	};
 
 	useEffect(() => {
@@ -110,7 +117,9 @@ const NewTask = () => {
 					<button className="btn add-btn" type="submit">
 						{task ? "Modifier" : "Ajouter"}
 					</button>
-					<button className="btn cancel-btn">Annuler</button>
+					<button className="btn cancel-btn" onClick={handleCancel}>
+						Annuler
+					</button>
 				</div>
 			</form>
 		</main>

@@ -67,7 +67,7 @@ const List = ({ extended = false, list, listExpanded, setListExpanded }) => {
 								cancel
 							</span>
 						))}
-					<h6 className="task-title">{list.title}</h6>
+					<h6 className="list-title">{list.title}</h6>
 				</div>
 				<div className="btn-container">
 					<p className="list-amount">
