@@ -70,7 +70,7 @@ const App = () => {
 			navigate("/lists", { state: { expanded: id } });
 		} else {
 			const nextId = Math.max(...lists.map(list => list.id)) + 1;
-			const newList = { id: nextId, ...inputs };
+			const newList = { id: nextId, amount: 0, ...inputs };
 			setLists([...lists, newList]);
 			await axios.post(`/lists`, newList);
 			navigate("/lists", { state: { expanded: nextId } });

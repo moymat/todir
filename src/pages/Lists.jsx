@@ -30,7 +30,7 @@ const Lists = () => {
 				) : (
 					<p>Pas de liste</p>
 				)}
-				<Link className="btn" to="/new-task">
+				<Link className="btn" to="/new-list">
 					Ajouter une liste
 				</Link>
 			</section>

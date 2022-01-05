@@ -75,6 +75,17 @@
       "title": "List 3",
       "color": "#09aa6c",
       "amount": 1
+    },
+    {
+      "id": 3,
+      "title": "List 4",
+      "color": "#e9ec27"
+    },
+    {
+      "id": 4,
+      "amount": 0,
+      "title": "List 5",
+      "color": "#2241dd"
     }
   ]
 }
