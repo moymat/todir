@@ -22,8 +22,10 @@
 
 .logo {
 	background-color: white;
-	width: var(--nav-item-dimension);
-	height: var(--nav-item-dimension);
+	min-width: var(--nav-item-dimension);
+	max-width: var(--nav-item-dimension);
+	min-height: var(--nav-item-dimension);
+	max-height: var(--nav-item-dimension);
 	border-radius: 50%;
 }
 
@@ -33,6 +35,7 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
+	padding-left: 3rem;
 	height: calc(100vh - var(--nav-height));
 	background-color: darkgray;
 	border-top: 0.15rem solid dimgray;
@@ -46,6 +49,7 @@
 
 .menu-item {
 	margin-top: 2.5rem;
+	padding: 0;
 }
 
 .menu-link {
@@ -75,4 +79,49 @@
 
 .icon {
 	font-size: 2rem;
+}
+
+@media screen and (min-width: 700px) {
+	.logo,
+	.icon-container {
+		margin: 0 2rem;
+	}
+
+	.icon-container {
+		visibility: hidden;
+		user-select: none;
+	}
+
+	.menu {
+		position: initial;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		border: none;
+		height: 100%;
+		width: 100%;
+		max-width: 600px;
+		padding: 0;
+		background-color: transparent;
+	}
+
+	.menu.hidden {
+		display: flex;
+	}
+
+	.menu-item {
+		margin: 0;
+	}
+
+	.menu-link {
+		font-size: 1rem;
+		text-transform: none;
+		color: initial;
+		font-weight: 600;
+	}
+
+	.menu-link::after {
+		background-color: var(--dark-gray);
+	}
 }

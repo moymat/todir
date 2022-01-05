@@ -57,6 +57,8 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 					{isUrgent(task.dueDate) && extended && (
 						<span className="alert material-icons">warning</span>
 					)}
+				</div>
+				<div className="task-info">
 					<p className="task-list">
 						Liste : {relatedList ? relatedList.title : "chargement..."}
 					</p>

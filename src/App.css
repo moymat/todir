@@ -2,10 +2,13 @@
 	--nav-height: 3rem;
 	--nav-item-dimension: 2rem;
 	--main-gray: rgb(75, 92, 107);
+	--dark-gray: rgb(56, 56, 56);
+	--tablet: 480px;
+	--desktop: 768px;
 }
 
 * {
-	color: rgb(56, 56, 56);
+	color: var(--dark-gray);
 }
 
 body {
@@ -30,7 +33,7 @@ section {
 }
 
 .page-title {
-	padding-top: 1rem;
+	padding: 2rem 0 1rem;
 	font-size: 1.2rem;
 }
 
@@ -50,4 +53,19 @@ section {
 	border-radius: 0.25rem;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+@media screen and (min-width: 700px) {
+	.main-container {
+		padding: 0 2rem;
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.page-title,
+	.section-title {
+		font-size: 1.4rem;
+		text-align: center;
+	}
 }

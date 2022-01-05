@@ -39,7 +39,9 @@
 
 input,
 select,
-textarea {
+textarea,
+option {
+	font-size: 0.9rem;
 	height: 100%;
 	width: 100%;
 	padding: 0.5rem;
@@ -79,4 +81,22 @@ label {
 	background-color: #ffffff;
 	border: 0.15rem solid #c3cfd9;
 	color: var(--main-gray);
+}
+
+@media screen and (min-width: 700px) {
+	.task-form {
+		display: grid;
+		grid-template-areas:
+			"title date list"
+			"desc desc desc"
+			"btns btns btns";
+		grid-template-columns: 3fr 2fr 2fr;
+		gap: 1rem;
+		padding: 2rem;
+	}
+
+	textarea,
+	select,
+	option {
+	}
 }

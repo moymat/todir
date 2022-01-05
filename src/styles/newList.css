@@ -16,15 +16,9 @@
 	max-width: 100%;
 }
 
-input {
-	height: 100%;
-	width: 100%;
-	padding: 0.5rem;
-	box-sizing: border-box;
-}
-
 label {
-	margin-bottom: 0.2rem;
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
 }
 
 #title-group label::after,
@@ -59,6 +53,11 @@ label {
 	border-radius: 50%;
 }
 
+.color-picker span {
+	font-size: 1.3rem;
+	color: var(--main-gray);
+}
+
 #color {
 	position: absolute;
 	padding: 0;
@@ -74,11 +73,27 @@ label {
 }
 
 .form-btns-container .btn {
-	margin: 0 0.4rem 1rem;
+	margin: 0.5rem 0.5rem;
 }
 
 .form-btns-container .cancel-btn {
 	background-color: #ffffff;
 	border: 0.15rem solid #c3cfd9;
 	color: var(--main-gray);
+}
+
+@media screen and (min-width: 700px) {
+	.list-form {
+		display: grid;
+		grid-template-areas:
+			"title color"
+			"btns btns";
+		grid-template-columns: auto max-content;
+		gap: 1rem;
+		padding: 2rem;
+	}
+
+	.input-container {
+		padding: 0;
+	}
 }
