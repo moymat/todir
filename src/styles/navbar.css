@@ -6,7 +6,8 @@
 	align-items: center;
 	width: 100%;
 	min-height: var(--nav-height);
-	background-color: darkgray;
+	background-color: lightgray;
+	z-index: 100;
 }
 
 .logo,
@@ -70,4 +71,8 @@
 .menu-item.selected .menu-link::after,
 .menu-item:hover .menu-link::after {
 	width: 100%;
+}
+
+.icon {
+	font-size: 2rem;
 }

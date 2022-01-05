@@ -1,0 +1,82 @@
+.task-form {
+	display: grid;
+	grid-template-areas:
+		"title title"
+		"date list"
+		"desc desc"
+		"btns btns";
+	margin: 1.5rem auto 1rem;
+	padding: 1rem 0;
+	background-color: #f7f9fa;
+	border: 0.15rem solid #c3cfd9;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	padding: 0.5rem 1rem 1rem;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+}
+
+#title-group {
+	grid-area: title;
+}
+
+#date-group {
+	grid-area: date;
+	padding-right: 0;
+}
+
+#list-group {
+	grid-area: list;
+}
+
+#desc-group {
+	grid-area: desc;
+}
+
+input,
+select,
+textarea {
+	height: 100%;
+	width: 100%;
+	padding: 0.5rem;
+	box-sizing: border-box;
+}
+
+textarea {
+	resize: none;
+}
+
+label {
+	margin-bottom: 0.2rem;
+}
+
+#title-group label::after,
+#date-group label::after,
+#list-group label::after {
+	content: "*";
+	margin-left: 0.2rem;
+	color: red;
+	font-size: 0.8rem;
+	font-style: italic;
+}
+
+.form-btns-container {
+	grid-area: btns;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.form-btns-container .btn {
+	margin: 0 0.4rem 1rem;
+}
+
+.form-btns-container .cancel-btn {
+	background-color: #ffffff;
+	border: 0.15rem solid #c3cfd9;
+	color: var(--main-gray);
+}

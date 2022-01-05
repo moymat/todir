@@ -1,57 +1,67 @@
-import React, { useEffect } from "react";
-import { format, addDays, compareAsc, parseISO } from "date-fns";
-import axios from "axios";
-import { useState } from "react/cjs/react.development";
+import { useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { ListsContext, TasksContext } from "../App";
+import { sortTasks } from "../utils/functions";
 import Task from "../components/Task";
 import List from "../components/List";
+import "../styles/home.css";
 
 const Home = () => {
-	const [urgentTasks, setUrgentTasks] = useState([]);
-	const [lists, setLists] = useState([]);
+	const { tasks } = useContext(TasksContext);
+	const { lists } = useContext(ListsContext);
+	const navigate = useNavigate();
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const { data: tasksData } = await axios.get(
-				"http://localhost:3004/tasks"
-			);
+	const onTaskClick = id => {
+		navigate("/tasks", { state: { expanded: id } });
+	};
 
-			const oneWeekFromNow = format(addDays(Date.now(), 7), "yyyy-MM-dd");
-			setUrgentTasks(
-				tasksData.filter(
-					task =>
-						compareAsc(parseISO(task.dueDate), parseISO(oneWeekFromNow)) < 1
-				)
-			);
-
-			const { data: listData } = await axios.get("http://localhost:3004/lists");
-			const formatedLists = listData.map(list => ({
-				...list,
-				amount: tasksData.reduce(
-					(acc, task) => (task.list === list.id ? acc + 1 : acc),
-					0
-				),
-			}));
-			setLists(formatedLists);
-		};
-		fetchData();
-	}, []);
+	const onListClick = id => {
+		navigate("/lists", { state: { expanded: id } });
+	};
 
 	return (
 		<main className="main-container">
-			<section></section>
-			<section>
-				<h2 className="section-title">Mes tâches urgentes</h2>
-				{urgentTasks.map(task => (
-					<Task task={task} key={task.id} />
-				))}
+			<section className="hero">
+				<h1>Bienvenue sur ToDit</h1>
+				<p>
+					Occaecat aute dolor et laboris do. Amet nulla ipsum mollit commodo
+					elit.
+				</p>
 			</section>
 			<section>
-				<h2 className="section-title">Mes listes</h2>
+				<h2 className="section-title">Mes tâches urgentes</h2>
+				{tasks
+					.filter(task => task.urgent)
+					.sort(sortTasks)
+					.map((task, i) => (
+						<div
+							className="task-container"
+							key={task.id}
+							onClick={() => onTaskClick(task.id)}>
+							<Task task={task} />
+						</div>
+					))}
+				<Link className="btn" to="/tasks">
+					Toutes mes tâches
+				</Link>
+			</section>
+			<section>
+				<h2 className="section-title">Mes listes actives</h2>
 				{lists
 					.sort((a, b) => (a.amount - b.amount < 0 ? 1 : -1))
 					.map(list =>
-						list.amount ? <List list={list} key={list.id} /> : null
+						list.amount ? (
+							<div
+								className="list-container"
+								key={list.id}
+								onClick={() => onListClick(list.id)}>
+								<List list={list} />
+							</div>
+						) : null
 					)}
+				<Link className="btn" to="/lists">
+					Toutes mes listes
+				</Link>
 			</section>
 		</main>
 	);

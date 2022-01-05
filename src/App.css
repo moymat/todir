@@ -1,14 +1,53 @@
 :root {
 	--nav-height: 3rem;
 	--nav-item-dimension: 2rem;
+	--main-gray: rgb(75, 92, 107);
+}
+
+* {
+	color: rgb(56, 56, 56);
+}
+
+body {
+	background-color: white;
 }
 
 .main-container {
 	margin-top: var(--nav-height);
-	padding: 0 0.5rem;
+	padding: 0 1rem;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem 0;
 }
 
 .section-title {
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	text-align: center;
+}
+
+.page-title {
+	padding-top: 1rem;
+	font-size: 1.2rem;
+}
+
+.secondary-title {
+	margin-top: 0;
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.btn {
+	margin: 1rem auto 0;
+	padding: 0.5rem 1rem;
+	border: none;
+	font-size: 1rem;
+	color: white;
+	background-color: var(--main-gray);
+	border-radius: 0.25rem;
+	text-decoration: none;
+	cursor: pointer;
 }
