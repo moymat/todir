@@ -1,13 +1,17 @@
 .navbar {
 	position: fixed;
 	top: 0;
+	background-color: var(--main-gray);
+	z-index: 100;
+	width: 100%;
+}
+
+.nav-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	min-height: var(--nav-height);
-	background-color: lightgray;
-	z-index: 100;
 }
 
 .logo,
@@ -21,7 +25,7 @@
 }
 
 .logo {
-	background-color: white;
+	background-color: lightgray;
 	min-width: var(--nav-item-dimension);
 	max-width: var(--nav-item-dimension);
 	min-height: var(--nav-item-dimension);
@@ -37,8 +41,8 @@
 	right: 0;
 	padding-left: 3rem;
 	height: calc(100vh - var(--nav-height));
-	background-color: darkgray;
-	border-top: 0.15rem solid dimgray;
+	background-color: var(--main-gray);
+	border-top: 0.15rem solid var(--dark-gray);
 	list-style: none;
 	z-index: 100;
 }
@@ -55,7 +59,7 @@
 .menu-link {
 	display: inline-block;
 	position: relative;
-	color: white;
+	color: lightgray;
 	font-size: 1.5rem;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -68,7 +72,7 @@
 	left: 0;
 	width: 0;
 	height: 0.1rem;
-	background-color: white;
+	background-color: lightgray;
 	transition: width 0.2s ease;
 }
 
@@ -79,9 +83,15 @@
 
 .icon {
 	font-size: 2rem;
+	color: lightgray;
 }
 
 @media screen and (min-width: 700px) {
+	.nav-container {
+		max-width: 1200px;
+		margin: auto;
+	}
+
 	.logo,
 	.icon-container {
 		margin: 0 2rem;
@@ -117,11 +127,21 @@
 	.menu-link {
 		font-size: 1rem;
 		text-transform: none;
-		color: initial;
+		color: lightgray;
 		font-weight: 600;
 	}
 
 	.menu-link::after {
-		background-color: var(--dark-gray);
+		background-color: lightgray;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.logo {
+		margin-left: 0;
+	}
+
+	.icon-container {
+		display: none;
 	}
 }

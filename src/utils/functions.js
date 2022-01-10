@@ -1,4 +1,4 @@
-import { addDays, compareAsc, parseISO } from "date-fns";
+import { addDays, compareAsc, format, parseISO } from "date-fns";
 
 export const isUrgent = date => {
 	const oneWeekFromNow = addDays(Date.now(), 7);
@@ -13,3 +13,5 @@ export const countTasks = (tasks, list) =>
 		(acc, task) => (task.list === list.id && !task.completed ? acc + 1 : acc),
 		0
 	);
+
+export const formatDate = date => format(new Date(date), "dd/MM/yyyy");

@@ -1,95 +1,66 @@
 {
   "tasks": [
     {
-      "id": 0,
-      "title": "Test 1",
-      "dueDate": "2022-01-10",
-      "description": "Eu nisi laborum qui consequat labore commodo incididunt eiusmod consequat nostrud enim voluptate. Commodo magna aliqua qui pariatur aliqua exercitation incididunt nulla. Magna nisi velit officia exercitation mollit minim enim duis non velit. Voluptate nostrud occaecat irure Lorem ullamco officia. Et velit consectetur amet ex fugiat occaecat adipisicing occaecat ea do consequat est.",
+      "title": "Faire des courses",
+      "dueDate": "2022-01-16",
       "list": 1,
-      "completed": false
+      "description": "Acheter:\n- pain\n- farine\n- pâtes\n- carottes\n- sauce tomate",
+      "completed": false,
+      "id": 1
     },
     {
-      "id": 1,
-      "title": "Test 2",
-      "dueDate": "2022-01-17",
-      "description": "Eu nisi laborum qui consequat labore commodo incididunt eiusmod consequat nostrud enim voluptate. Commodo magna aliqua qui pariatur aliqua exercitation incididunt nulla. Magna nisi velit officia exercitation mollit minim enim duis non velit. Voluptate nostrud occaecat irure Lorem ullamco officia. Et velit consectetur amet ex fugiat occaecat adipisicing occaecat ea do consequat est.",
-      "list": 1,
-      "completed": "2022-01-04"
-    },
-    {
-      "id": 3,
-      "title": "Test 45",
-      "dueDate": "2022-01-29",
-      "description": "Anim irure cillum laborum fugiat enim et aliqua esse. Occaecat magna quis exercitation deserunt nisi eu exercitation est qui. Irure consequat mollit quis magna magna nostrud ea tempor. Irure ullamco ipsum enim laborum tempor quis. Excepteur enim ullamco qui consequat pariatur incididunt nostrud et officia sit voluptate enim eu. Ullamco exercitation officia sunt cillum. Ullamco excepteur magna nisi dolor dolore ex esse veniam consequat.",
-      "list": 2,
-      "completed": "2022-01-04"
-    },
-    {
-      "id": 4,
-      "title": "Test 6",
-      "dueDate": "2022-01-07",
-      "list": 0,
-      "description": "Asnfgsfbgsbg ljbdfsdf usbdfbsfb.",
-      "completed": false
-    },
-    {
-      "id": 5,
-      "title": "Test 43",
-      "dueDate": "2022-01-13",
+      "title": "Faire le ménage",
+      "dueDate": "2022-01-23",
       "list": 1,
       "description": "",
-      "completed": "2022-01-04"
+      "completed": false,
+      "id": 2
     },
     {
-      "id": 6,
-      "title": "Test 565",
-      "dueDate": "2022-02-04",
+      "title": "Ranger la chambre",
+      "dueDate": "2022-01-20",
       "list": 1,
       "description": "",
-      "completed": "2022-01-04"
+      "completed": "2022-01-10",
+      "id": 3
     },
     {
-      "id": 7,
-      "title": "Test 654",
-      "dueDate": "2022-01-22",
-      "list": 1,
-      "description": "",
-      "completed": "2022-01-04"
-    },
-    {
-      "title": "Test 66",
+      "title": "Courir 2km",
       "dueDate": "2022-01-14",
       "list": 2,
       "description": "",
-      "completed": "2022-01-05",
-      "id": 8
+      "completed": false,
+      "id": 4
+    },
+    {
+      "title": "Terminer le dossier",
+      "dueDate": "2022-01-31",
+      "list": 3,
+      "description": "",
+      "completed": false,
+      "id": 5
     }
   ],
   "lists": [
     {
-      "id": 0,
-      "title": "List 1 avec un très long nom",
-      "color": "#f91a1a"
+      "title": "Maison",
+      "color": "#d35a5a",
+      "id": 1
     },
     {
-      "id": 1,
-      "title": "List 2",
-      "color": "#3abff8"
+      "title": "Sport",
+      "color": "#64c966",
+      "id": 2
     },
     {
-      "id": 2,
-      "title": "List 3",
-      "color": "#09aa6c"
+      "title": "Travail",
+      "color": "#7589ea",
+      "id": 3
     },
     {
-      "id": 3,
-      "title": "List 4",
-      "color": "#e9ec27"
-    },
-    {
-      "id": 4,
-      "title": "List 5",
-      "color": "#2241dd"
+      "title": "Voyages",
+      "color": "#ddd040",
+      "id": 4
     }
   ]
 }

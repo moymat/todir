@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListsContext, TasksContext } from "../App";
-import { sortTasks } from "../utils/functions";
+import { countTasks, sortTasks } from "../utils/functions";
 import "../styles/list.css";
 import SmallTask from "./SmallTask";
 
 const List = ({ extended = false, list, listExpanded, setListExpanded }) => {
 	const [isExpanded, setIsExpanded] = useState(false);
 	const [relatedTasks, setRelatedTasks] = useState([]);
+	const [amount, setAmount] = useState(0);
 	const { tasks } = useContext(TasksContext);
 	const { deleteList } = useContext(ListsContext);
 	const navigate = useNavigate();
@@ -33,26 +34,21 @@ const List = ({ extended = false, list, listExpanded, setListExpanded }) => {
 	}, [listExpanded, list]);
 
 	useEffect(() => {
-		setRelatedTasks(
-			tasks
-				.filter(task => task.list === list.id)
-				.sort((a, b) =>
-					a.completed && !b.completed
-						? 1
-						: !a.completed && b.completed
-						? -1
-						: sortTasks(a, b)
-				)
-		);
+		const rTasks = tasks
+			.filter(task => task.list === list.id)
+			.sort((a, b) =>
+				a.completed && !b.completed
+					? 1
+					: !a.completed && b.completed
+					? -1
+					: sortTasks(a, b)
+			);
+		setRelatedTasks(rTasks);
+		setAmount(countTasks(rTasks, list));
 	}, [tasks, list]);
 
 	return (
-		<div
-			className="list"
-			style={{
-				backgroundColor: `${list.color}7F`,
-				borderColor: list.color,
-			}}>
+		<div className="list" style={{ backgroundColor: `${list.color}7F` }}>
 			<div className="main-bar">
 				<div className={`title-container ${extended ? "extended" : ""}`}>
 					{extended &&
@@ -63,7 +59,7 @@ const List = ({ extended = false, list, listExpanded, setListExpanded }) => {
 						) : (
 							<span
 								onClick={handleDeleteClick}
-								className="delete-list material-icons">
+								className="cancel-btn material-icons">
 								cancel
 							</span>
 						))}
@@ -71,7 +67,7 @@ const List = ({ extended = false, list, listExpanded, setListExpanded }) => {
 				</div>
 				<div className="btn-container">
 					<p className="list-amount">
-						{list.amount} tâche{`${list.amount > 1 ? "s" : ""}`}
+						{amount} tâche{`${amount > 1 ? "s" : ""}`}
 					</p>
 				</div>
 			</div>

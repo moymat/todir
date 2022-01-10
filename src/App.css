@@ -3,8 +3,6 @@
 	--nav-item-dimension: 2rem;
 	--main-gray: rgb(75, 92, 107);
 	--dark-gray: rgb(56, 56, 56);
-	--tablet: 480px;
-	--desktop: 768px;
 }
 
 * {
@@ -15,16 +13,25 @@ body {
 	background-color: white;
 }
 
+#root {
+	position: relative;
+	min-height: 100vh;
+}
+
 .main-container {
-	margin-top: var(--nav-height);
-	padding: 0 1rem;
+	min-height: calc(100vh - var(--nav-height));
+	padding: var(--nav-height) 1rem calc(var(--nav-height) + 2rem);
+	box-sizing: border-box;
 }
 
 section {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 1rem 0;
+}
+
+section:not(:first-of-type) {
+	margin-top: 1.5rem;
 }
 
 .section-title {
@@ -33,7 +40,7 @@ section {
 }
 
 .page-title {
-	padding: 2rem 0 1rem;
+	padding: 1rem 0;
 	font-size: 1.2rem;
 }
 
@@ -55,9 +62,28 @@ section {
 	cursor: pointer;
 }
 
+.validate-btn:hover {
+	cursor: pointer;
+	color: rgb(16, 128, 16);
+}
+
+.cancel-btn:hover {
+	cursor: pointer;
+	color: rgb(228, 22, 22);
+}
+
+.task-btn:first-of-type {
+	margin-right: 0.4rem;
+}
+
 @media screen and (min-width: 700px) {
+	html {
+		font-size: 18px;
+	}
+
 	.main-container {
-		padding: 0 2rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
 		max-width: 1200px;
 		margin-left: auto;
 		margin-right: auto;
@@ -67,5 +93,11 @@ section {
 	.section-title {
 		font-size: 1.4rem;
 		text-align: center;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	html {
+		font-size: 20px;
 	}
 }

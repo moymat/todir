@@ -10,6 +10,7 @@ import NewTask from "./pages/NewTask";
 import NewList from "./pages/NewList";
 import "./App.css";
 import { format } from "date-fns";
+import Footer from "./components/Footer";
 
 export const ListsContext = createContext([]);
 export const TasksContext = createContext([]);
@@ -66,7 +67,7 @@ const App = () => {
 		} else {
 			newList.id = Math.max(...lists.map(list => list.id)) + 1;
 			await axios.post(`/lists`, newList);
-			setLists([...lists, { ...newList, amount: 0 }]);
+			setLists([...lists, newList]);
 			navigate("/lists", { state: { expanded: newList.id } });
 		}
 	};
@@ -84,11 +85,7 @@ const App = () => {
 			}));
 			setTasks(formatedTasks);
 
-			const formatedLists = listData.map(list => ({
-				...list,
-				amount: countTasks(tasksData, list),
-			}));
-			setLists(formatedLists);
+			setLists(listData);
 		};
 
 		fetchData();
@@ -106,6 +103,7 @@ const App = () => {
 					<Route exact path="/lists" element={<Lists />} />
 					<Route exact path="/new-list" element={<NewList />} />
 				</Routes>
+				<Footer />
 			</ListsContext.Provider>
 		</TasksContext.Provider>
 	);

@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { isUrgent } from "../utils/functions";
+import { isUrgent, formatDate } from "../utils/functions";
 import { ListsContext, TasksContext } from "../App";
 import "../styles/task.css";
 
@@ -35,17 +35,9 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 	return (
 		<div
 			className={`task ${task.completed ? "completed" : ""}`}
-			style={
-				relatedList &&
-				(task.completed
-					? {
-							borderColor: relatedList.color,
-					  }
-					: {
-							backgroundColor: `${relatedList.color}7F`,
-							borderColor: relatedList.color,
-					  })
-			}>
+			style={{
+				backgroundColor: task.completed ? "" : `${relatedList?.color}7F`,
+			}}>
 			<div className={`main-bar ${isExpanded ? "expanded" : ""}`}>
 				<div className={`title-container ${extended ? "extended" : ""}`}>
 					{extended && (
@@ -53,7 +45,11 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 							expand_{isExpanded ? "less" : "more"}
 						</span>
 					)}
-					<h6 className="task-title">{task.title}</h6>
+					<h6
+						className="task-title"
+						style={{ color: task.completed ? relatedList?.color : "" }}>
+						{task.title}
+					</h6>
 					{isUrgent(task.dueDate) && extended && (
 						<span className="alert material-icons">warning</span>
 					)}
@@ -65,8 +61,8 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 					{
 						<p className="task-date">
 							{task.completed
-								? `Complétée le : ${task.completed}`
-								: `Pour le : ${task.dueDate}`}
+								? `Complétée le ${formatDate(task.completed)}`
+								: `Pour le ${formatDate(task.dueDate)}`}
 						</p>
 					}
 				</div>
