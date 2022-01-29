@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { ListsContext, TasksContext } from "../App";
-import "../styles/newTask.css";
+import "../styles/new-task.css";
 
 const NewTask = () => {
 	const [task, setTask] = useState(null);

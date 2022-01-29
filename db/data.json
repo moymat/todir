@@ -5,7 +5,7 @@
       "dueDate": "2022-01-16",
       "list": 1,
       "description": "Acheter:\n- pain\n- farine\n- pâtes\n- carottes\n- sauce tomate",
-      "completed": false,
+      "completed": "2022-01-11",
       "id": 1
     },
     {
@@ -23,14 +23,6 @@
       "description": "",
       "completed": "2022-01-10",
       "id": 3
-    },
-    {
-      "title": "Courir 2km",
-      "dueDate": "2022-01-14",
-      "list": 2,
-      "description": "",
-      "completed": false,
-      "id": 4
     },
     {
       "title": "Terminer le dossier",

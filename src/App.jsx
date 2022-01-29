@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
-import { countTasks, isUrgent } from "./utils/functions";
+import { isUrgent } from "./utils/functions";
+import { format } from "date-fns";
 import axios from "./utils/axios";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
@@ -8,12 +9,11 @@ import Tasks from "./pages/Tasks";
 import Lists from "./pages/Lists";
 import NewTask from "./pages/NewTask";
 import NewList from "./pages/NewList";
-import "./App.css";
-import { format } from "date-fns";
 import Footer from "./components/Footer";
+import "./App.css";
 
-export const ListsContext = createContext([]);
-export const TasksContext = createContext([]);
+export const ListsContext = createContext({});
+export const TasksContext = createContext({});
 
 const App = () => {
 	const [tasks, setTasks] = useState([]);

@@ -21,14 +21,14 @@ label {
 	margin-bottom: 0.5rem;
 }
 
-#title-group label::after,
+/* #title-group label::after,
 #color-group label::after {
 	content: "*";
 	margin-left: 0.2rem;
 	color: red;
 	font-size: 0.8rem;
 	font-style: italic;
-}
+} */
 
 #color-group {
 	height: fit-content;

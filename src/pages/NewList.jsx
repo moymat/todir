@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ListsContext } from "../App";
-import "../styles/newList.css";
+import "../styles/new-list.css";
 
 const NewList = () => {
 	const [list, setList] = useState(null);

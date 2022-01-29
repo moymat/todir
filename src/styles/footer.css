@@ -1,17 +1,33 @@
 footer {
 	position: absolute;
 	bottom: 0;
+	height: var(--nav-height);
+	width: 100%;
+	background-color: var(--main-gray);
+}
+
+.footer-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: var(--nav-height);
-	width: 100%;
-	background-color: var(--main-gray);
+	height: 100%;
+	margin: auto;
 }
 
 .copyright,
 .footer-link {
 	font-size: 0.8rem;
 	color: white;
+}
+
+@media screen and (min-width: 700px) {
+	.footer-container {
+		flex-direction: row;
+	}
+
+	.copyright,
+	.footer-link {
+		margin: 0 1rem;
+	}
 }

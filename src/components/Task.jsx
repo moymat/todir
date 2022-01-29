@@ -50,7 +50,7 @@ const Task = ({ extended = false, task, taskExpanded, setTaskExpanded }) => {
 						style={{ color: task.completed ? relatedList?.color : "" }}>
 						{task.title}
 					</h6>
-					{isUrgent(task.dueDate) && extended && (
+					{extended && !task.completed && isUrgent(task.dueDate) && (
 						<span className="alert material-icons">warning</span>
 					)}
 				</div>

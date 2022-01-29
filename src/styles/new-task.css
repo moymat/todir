@@ -7,7 +7,7 @@
 		"btns btns";
 	margin: 1.5rem auto 1rem;
 	padding: 1rem 0;
-	background-color: #f7f9fa;
+	background-color: var(--light-gray);
 	border: 0.15rem solid #c3cfd9;
 }
 
@@ -85,7 +85,6 @@ label {
 
 @media screen and (min-width: 700px) {
 	.task-form {
-		display: grid;
 		grid-template-areas:
 			"title date list"
 			"desc desc desc"

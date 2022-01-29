@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ListsContext } from "../App";
-import "../styles/smallTask.css";
+import "../styles/small-task.css";
 
 const SmallTask = ({ task, goToTask }) => {
 	const { lists } = useContext(ListsContext);

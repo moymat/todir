@@ -1,8 +1,10 @@
 :root {
 	--nav-height: 3rem;
 	--nav-item-dimension: 2rem;
+	--light-gray: #f7f9fa;
 	--main-gray: rgb(75, 92, 107);
 	--dark-gray: rgb(56, 56, 56);
+	--container-max-width: 1200px;
 }
 
 * {
@@ -84,7 +86,7 @@ section:not(:first-of-type) {
 	.main-container {
 		padding-left: 2rem;
 		padding-right: 2rem;
-		max-width: 1200px;
+		max-width: var(--container-max-width);
 		margin-left: auto;
 		margin-right: auto;
 	}
